@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <!-- create a link to a route-->
+      <!-- using named routes is better as the url may change at a later date -->
+      <router-link :to="{ name: 'event-list' }">List</router-link>&nbsp;|
+      <router-link :to="{ name: 'event-show' }">Show Event #1</router-link
+      >&nbsp;|
+      <router-link :to="{ name: 'event-create' }">Create</router-link>
     </div>
+    <!-- renders the matched link -->
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

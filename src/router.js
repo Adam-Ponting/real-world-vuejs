@@ -1,26 +1,39 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Vue from 'vue'
+import Router from 'vue-router'
+import EventCreate from './views/EventCreate.vue'
+import EventList from './views/EventList.vue'
+import EventShow from './views/EventShow.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: Home
+      path: '/', // the URL
+      name: 'event-list', // Name of the route
+      component: EventList // Component to render
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: '/event',
+      name: 'event-show',
+      component: EventShow,
+      /* redirect example #2 */
+      alias: '/event-show' // /event-to-show shows same content as /event (not great for search engines)
+      /* end redirect example #2 */
+    },
+    {
+      path: '/event/create',
+      name: 'event-create',
+      component: EventCreate
+    },
+
+    /* redirect example #1 */
+    {
+      path: '/event-to-show', // redirect /event-to-show to /event (using named route)
+      redirect: { name: 'event-show' }
     }
+    /* end redirect example #1 */
   ]
-});
+})
