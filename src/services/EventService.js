@@ -18,3 +18,8 @@ export default {
     return apiClient.get('/events/' + id) // get event id with id as prop from EventShow
   }
 }
+/*   
+  npm install -g json-server
+  Now to spin up this little API server we just run:
+  json-server --watch db.json 
+  */
